@@ -1,12 +1,23 @@
-import React, { useState } from "react";
-import { HashRouter as Router, Route, Switch, Redirect } from "react-router-dom";
-import Auth from "routes/Auth";
+import React from "react";
+import {HashRouter as Router, Route} from "react-router-dom";
+import Navigation from "components/Navigation"
 import Home from "routes/Home";
+import Roadmap from "routes/Roadmap";
+import StudyGroup from "routes/StudyGroup";
+import ContestGroup from "routes/ContestGroup";
 import Profile from "routes/Profile";
-import Navigation from "components/Navigation";
 
-const Routers = () => {
+//경로
+const AppRouter = () => {
   return (
+    <Router>
+      <Navigation />
+      <Route path="/" exact={true} component={Home}>Home</Route>
+      <Route path="/roadmap" exact={true} component={Roadmap}></Route>
+      <Route path="/studygroup" exact={true} component={StudyGroup}></Route>
+      <Route path="/contestgroup" exact={true} component={ContestGroup}></Route>
+      <Route path="/profile" exact={true} component={Profile}></Route>
+    </Router>
   );
-};
-export default Routers;
+}
+export default AppRouter;
