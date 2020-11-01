@@ -4,7 +4,7 @@ const StudyGroupForm = () => {
   return (
     <div>
       <form>
-        <input>type</input>
+        <input></input>
       </form>
     </div>
   );
