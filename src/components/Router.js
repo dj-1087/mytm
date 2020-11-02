@@ -6,6 +6,7 @@ import Roadmap from "routes/Roadmap";
 import StudyGroup from "routes/StudyGroup";
 import ContestGroup from "routes/ContestGroup";
 import Profile from "routes/Profile";
+import Auth from "routes/Auth";
 
 //경로
 const AppRouter = () => {
@@ -17,6 +18,7 @@ const AppRouter = () => {
       <Route path="/studygroup" exact={true} component={StudyGroup}></Route>
       <Route path="/contestgroup" exact={true} component={ContestGroup}></Route>
       <Route path="/profile" exact={true} component={Profile}></Route>
+      <Route path="/login" exact={true} component={Auth}></Route>
     </Router>
   );
 }
