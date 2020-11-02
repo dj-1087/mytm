@@ -1,0 +1,17 @@
+{
+  "name": "lectures",
+  "elements": [
+    {
+      "name": "강좌1",
+      "professor": "김상균",
+      "grade": "1학년",
+      "id": "1111"
+    },
+    {
+      "name": "강좌2",
+      "professor": "이강선",
+      "grade": "2학년",
+      "id": "2222"
+    }
+  ]
+}
