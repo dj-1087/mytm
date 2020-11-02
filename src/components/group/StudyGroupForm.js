@@ -7,17 +7,17 @@ import { dbService } from "fbase";
 
 const StudyGroupForm = () => {
   const [studyGroup, setStudyGroup] = useState({
-    group_name: '',
-    group_lecture: '',
-    group_type: '',
-    group_numOfMembers: '',
-    group_goal: '',
-    group_plane: '',
-    group_qualification: ''
+    group_name: 'none',
+    group_lecture: 'none',
+    group_type: 'none',
+    group_numOfMembers: '0',
+    group_goal: 'none',
+    group_plane: 'none',
+    group_qualification: 'none'
   });
 
 
-  const lectures  = elements.map((lecture) => (lecture.name));
+  const lectures = elements.map((lecture) => (lecture.name));
   const mkOptions = (lectures) => {
     const options = [];
     for (let index = 0; index < lectures.length; index++) {
@@ -30,7 +30,7 @@ const StudyGroupForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("groups").add(studyGroup);
+    await dbService.collection("groups").add({ ...studyGroup, createdAt: Date.now(), });
     setStudyGroup("");
   };
 
@@ -47,45 +47,45 @@ const StudyGroupForm = () => {
   console.log(lectures);
   return (
     <>
-    <div>
-      <form onSubmit={onSubmit} method="post">
-        <div>
-          <label for="group_type">그룹 속성</label>
-          <select name="group_type" id="group_type" onChange={onChange}>
-            <option value="study">스터디</option>
-            <option value="tutoring">튜터링</option>
-          </select>
-        </div>
-        <div>
-          <label for="group_lecture">강좌명</label>
-          <select name="group_lecture" id="group_lecture" onChange={onChange}>
-            {mkOptions(lectures)}
-          </select>
-        <div>
-          <label for="group_name">그룹명</label>
-          <input type="text" id="group_name" name="group_name" onChange={onChange} />
-        </div>
-        <div>
-          <label for="group_numOfMembers">인원수</label>
-          <input type="text" id="group_numOfMembers" name="group_numOfMembers" onChange={onChange} />
-        </div>
-        <div>
-          <label for="group_goal">그룹 목표</label>
-          <input type="text" id="group_goal" name="group_goal" onChange={onChange} />
-        </div>
-        <div>
-          <label for="group_plane">학업계획</label>
-          <input type="text" id="group_plane" name="group_plane" onChange={onChange} />
-        </div>
-        <div>
+      <div>
+        <form onSubmit={onSubmit} method="post">
+          <div>
+            <label for="group_type">그룹 속성</label>
+            <select name="group_type" id="group_type" onChange={onChange}>
+              <option value="study">스터디</option>
+              <option value="tutoring">튜터링</option>
+            </select>
+          </div>
+          <div>
+            <label for="group_lecture">강좌명</label>
+            <select name="group_lecture" id="group_lecture" onChange={onChange}>
+              {mkOptions(lectures)}
+            </select>
+            <div>
+              <label for="group_name">그룹명</label>
+              <input type="text" id="group_name" name="group_name" onChange={onChange} />
+            </div>
+            <div>
+              <label for="group_numOfMembers">인원수</label>
+              <input type="text" id="group_numOfMembers" name="group_numOfMembers" onChange={onChange} />
+            </div>
+            <div>
+              <label for="group_goal">그룹 목표</label>
+              <input type="text" id="group_goal" name="group_goal" onChange={onChange} />
+            </div>
+            <div>
+              <label for="group_plane">학업계획</label>
+              <input type="text" id="group_plane" name="group_plane" onChange={onChange} />
+            </div>
+            <div>
 
-        </div>
-          <label for="group_qualification">자격 요건</label>
-          <input type="text" id="group_qualification" name="group_qualification" onChange={onChange} />
-        </div>
-        <input type="submit" />
-      </form>
-    </div>
+            </div>
+            <label for="group_qualification">자격 요건</label>
+            <input type="text" id="group_qualification" name="group_qualification" onChange={onChange} />
+          </div>
+          <input type="submit" />
+        </form>
+      </div>
     </>
   );
 }
