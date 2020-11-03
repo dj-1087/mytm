@@ -1,7 +1,8 @@
 import React from "react";
+import StudyGroupList from "components/group/StudyGroupList"
 
-const StudyGroup = () => {
-  return (<h1>StudyGroup</h1>);
+const StudyGroup = ({userObj}) => {
+  return (<StudyGroupList userObj={userObj} />);
 }
 
 export default StudyGroup;

@@ -1,21 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { elements } from "components/roadmap/lectures"
-//import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 import { dbService } from "fbase";
 //그룹 폼 텍스트 데이터를 DB에 저장 DB에서 특정 데이터를 반환 하는 것 구현
 
-const StudyGroupForm = () => {
+const StudyGroupForm = ({userObj}) => {
   const [studyGroup, setStudyGroup] = useState({
-    group_name: 'none',
-    group_lecture: 'none',
-    group_type: 'none',
+    group_name: '미등록',
+    group_lecture: '미등록',
+    group_type: '미등록',
     group_numOfMembers: '0',
-    group_goal: 'none',
-    group_plane: 'none',
-    group_qualification: 'none'
+    group_goal: '미등록',
+    group_plane: '미등록',
+    group_qualification: '미등록'
   });
-
+  /*studyGroup.propTypes = {
+    group_name: PropTypes.string.isRequired,
+    group_lecture: PropTypes.string.isRequired,
+    group_type: PropTypes.string.isRequired,
+    group_numOfMembers: PropTypes.number.isRequired,
+    group_goal: PropTypes.string.isRequired,
+    group_plane: PropTypes.string.isRequired,
+    group_qualification: PropTypes.string
+  }*/
 
   const lectures = elements.map((lecture) => (lecture.name));
   const mkOptions = (lectures) => {
@@ -30,7 +38,11 @@ const StudyGroupForm = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    await dbService.collection("groups").add({ ...studyGroup, createdAt: Date.now(), });
+    await dbService.collection("groups").add({ 
+      info: studyGroup,
+      createdAt: Date.now(),
+      creatorId: "null"/*userObj.uid*/
+    });
     setStudyGroup("");
   };
 
