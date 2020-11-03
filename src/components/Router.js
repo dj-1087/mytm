@@ -9,7 +9,7 @@ import Profile from "routes/Profile";
 import StudyGroupForm from "components/group/StudyGroupForm";
 import Sample from "components/roadmap/Sample";
 import Table from "components/group/G_HS";
-
+import Auth from "routes/Auth"
 
 
 //경로
@@ -24,6 +24,7 @@ const AppRouter = ({userObj}) => {
       <Route path="/contestgroup" exact={true} component={ContestGroup}></Route>
       <Route path="/profile" exact={true} component={Profile}></Route>
       <Route path="/sample_form" exact={true} component={StudyGroupForm}></Route>
+      <Route path="/login" exact={true} component={Auth}></Route>
     </Router>
   );
 }

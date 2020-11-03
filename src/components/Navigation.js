@@ -13,6 +13,7 @@ const Navigation = () => {
           <li><Link to="/contestgroup">공모전/대회</Link></li>
           <li><Link to="/profile">마이페이지</Link></li>
           <li><Link to="/sample_form">스터디그룹 폼</Link></li>
+          <li><Link to="/login">로그인</Link></li>
         </ul>
       </Router>
     </div>
