@@ -71,7 +71,6 @@ const StudyGroupForm = ({userObj}) => {
               <option value="tutoring">튜터링</option>
             </select>
           </div>
-         
           <div>
             <label id='강좌명' for="group_lecture">강좌명</label>
             <select name="group_lecture" id="group_lecture" onChange={onChange}>

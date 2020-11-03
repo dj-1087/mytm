@@ -7,16 +7,16 @@
   border-radius: 4px;
   box-shadow: 5px 5px 2px -3px rgb(227, 227, 233);
 }
-#DB {
+#전공선택 {
   background-color: rgba(209, 228, 245, 0.548);
   border-radius: 4px;
   border-color: azure;
   margin: 1px;
 }
 #전필 {
-  background-color: rgb(253, 215, 164);
+  background-color: rgb(255, 220, 175);
   border-radius: 4px;
-  border-color: rgb(253, 215, 164);
+  border-color: rgb(255, 226, 187);
   margin: 1px;
 }
 #그룹생성 {
@@ -33,7 +33,7 @@
 }
 
 #group_lecture {
-  margin-right: 116px;
+  margin-right: 18px;
   box-shadow: 5px 5px 2px -3px rgb(227, 227, 233);
 }
 
