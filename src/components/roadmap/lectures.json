@@ -2,15 +2,16 @@
   "name": "lectures",
   "elements": [
     {
-      "name": "강좌1",
+      "name": "기초프로그래밍",
       "professor": "김상균",
       "grade": "1학년",
       "id": "1111"
-    },
+    }
+    ,
     {
-      "name": "강좌2",
+      "name": "기초프로그래밍2",
       "professor": "이강선",
-      "grade": "2학년",
+      "grade": "1학년",
       "id": "2222"
     }
   ]
