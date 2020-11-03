@@ -57,22 +57,27 @@ const StudyGroupForm = ({userObj}) => {
     });
   };
   console.log(lectures);
+
+
+
   return (
     <>
       <div>
-        <form onSubmit={onSubmit} method="post">
-          <div>
-            <label for="group_type">그룹 속성</label>
+        <form id='groupMake' onSubmit={onSubmit} method="post">
+          <div >
+            <label id='그룹속성' for="group_type">그룹 속성</label>
             <select name="group_type" id="group_type" onChange={onChange}>
-              <option value="study">스터디</option>
+              <option value="study" >스터디</option>
               <option value="tutoring">튜터링</option>
             </select>
           </div>
+         
           <div>
-            <label for="group_lecture">강좌명</label>
+            <label id='강좌명' for="group_lecture">강좌명</label>
             <select name="group_lecture" id="group_lecture" onChange={onChange}>
               {mkOptions(lectures)}
             </select>
+            
             <div>
               <label for="group_name">그룹명</label>
               <input type="text" id="group_name" name="group_name" onChange={onChange} />
@@ -89,13 +94,15 @@ const StudyGroupForm = ({userObj}) => {
               <label for="group_plane">학업계획</label>
               <input type="text" id="group_plane" name="group_plane" onChange={onChange} />
             </div>
+            
+
             <div>
 
             </div>
             <label for="group_qualification">자격 요건</label>
             <input type="text" id="group_qualification" name="group_qualification" onChange={onChange} />
           </div>
-          <input type="submit" />
+          <input id="제출" type="submit" />
         </form>
       </div>
     </>

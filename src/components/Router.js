@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Route} from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import Navigation from "components/Navigation"
 import Home from "routes/Home";
 //import Roadmap from "routes/Roadmap";
@@ -10,13 +10,14 @@ import StudyGroupForm from "components/group/StudyGroupForm";
 import Sample from "components/roadmap/Sample";
 import Table from "components/group/G_HS";
 
+
+
 //경로
 const AppRouter = ({userObj}) => {
   return (
     <Router>
       <Navigation />
       <Route path="/" exact={true} component={Home}>Home</Route>
-      
       <Route path="/components/roadmap/Sample" exact={true} component={Sample}></Route>
       <Route path="/components/group/G_HS" exact={true} component={Table}></Route>
       <Route path="/studygroup" exact={true}><StudyGroup userObj={userObj}/></Route>
