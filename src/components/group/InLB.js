@@ -8,8 +8,8 @@ const Table = () => {
          <button id="basic">B모임 기본 정보 출력</button>
          <button id="basic">C모임 기본 정보 출력</button>
          <button id='그룹생성'>
-    <Link to="/sample_form">그룹 생성</Link>
-    </button> 
+           <Link to="/sample_form">그룹 생성</Link>
+        </button> 
        </Router>
 
        );

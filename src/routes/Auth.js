@@ -15,7 +15,6 @@ const Auth = () => {
     }
     await authService.signInWithPopup(provider);
   };
-
   return (
     <div className="authContainer">
       <AuthForm />

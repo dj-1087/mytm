@@ -60,6 +60,7 @@ const AuthForm = () => {
           onChange={onChange}
         />
         <input
+          id='로그인확인'
           type="submit"
           className="authInput authSubmit"
           value={newAccount ? "Create Account" : "Sign In"}

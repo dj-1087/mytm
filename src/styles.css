@@ -324,18 +324,18 @@
   box-shadow: 5px 5px 2px -3px rgb(227, 227, 233);
 }
 
-#그룹속성{
+#그룹속성 {
   margin-right: 3px;
 }
 
-#group_type{
+#group_type {
   margin-right: 109px;
   box-shadow: 5px 5px 2px -3px rgb(227, 227, 233);
 }
 
- #제출{
+#제출 {
   background-color: rgba(160, 150, 144, 0.548);
-  border-radius: 5px ;
+  border-radius: 5px;
   font-size: 16px;
 }
 
@@ -347,10 +347,10 @@
 }
 
 form {
-    width: 90%;
-  }
+  width: 90%;
+}
 
-input{
+input {
   border-color: azure;
   border-radius: 4px;
 }

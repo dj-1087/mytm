@@ -3,6 +3,7 @@
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { elements } from "components/roadmap/lectures"
+import InLB from "components/group/InLB";
 
 // 튜터링 모여있는 테이블 만들기 --> 전공 필수, 전공 선택 강좌 31개 DT만 
 
