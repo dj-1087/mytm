@@ -19,10 +19,10 @@ const Auth = () => {
     <div className="authContainer">
       <AuthForm />
       <div className="authBtns">
-        <button onClick={onSocialClick} name="google" className="authBtn">
+        <button onClick={onSocialClick} name="google" className="authBtn" id='구글로로그인'>
           Continue with Google
         </button>
-        <button onClick={onSocialClick} name="github" className="authBtn">
+        <button onClick={onSocialClick} name="github" className="authBtn" id='깃허브로로그인'>
           Continue with Github
         </button>
       </div>

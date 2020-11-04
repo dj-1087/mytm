@@ -40,6 +40,7 @@ const AuthForm = () => {
     <>
       <form onSubmit={onSubmit} className="container">
         <input
+          id='이메일'
           name="email"
           type="email"
           placeholder="Email"
@@ -49,6 +50,7 @@ const AuthForm = () => {
           className="authInput"
         />
         <input
+          id='비번'
           name="password"
           type="password"
           placeholder="Password"
@@ -58,6 +60,7 @@ const AuthForm = () => {
           onChange={onChange}
         />
         <input
+          id='로그인확인'
           type="submit"
           className="authInput authSubmit"
           value={newAccount ? "Create Account" : "Sign In"}

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { elements } from "components/roadmap/lectures"
 import PropTypes from "prop-types";
-
+import DeleteIcon from "@material-ui/icons/Delete";
+import SaveIcon from "@material-ui/icons/Save";
+import { Button} from "@material-ui/core";
 import { dbService } from "fbase";
+import { Link } from "react-router-dom";
 //그룹 폼 텍스트 데이터를 DB에 저장 DB에서 특정 데이터를 반환 하는 것 구현
 
 const StudyGroupForm = ({userObj}) => {
@@ -35,7 +38,6 @@ const StudyGroupForm = ({userObj}) => {
     return (options)
   }
 
-
   const onSubmit = async (event) => {
     event.preventDefault();
     await dbService.collection("groups").add({ 
@@ -46,9 +48,6 @@ const StudyGroupForm = ({userObj}) => {
     setStudyGroup("");
   };
 
-
-
-
   const onChange = e => {
     console.log(e.target.name);
     setStudyGroup({
@@ -57,8 +56,6 @@ const StudyGroupForm = ({userObj}) => {
     });
   };
   console.log(lectures);
-
-
 
   return (
     <>
@@ -94,17 +91,26 @@ const StudyGroupForm = ({userObj}) => {
               <input type="text" id="group_plane" name="group_plane" onChange={onChange} />
             </div>
             
-
-            <div>
-
-            </div>
             <label for="group_qualification">자격 요건</label>
             <input type="text" id="group_qualification" name="group_qualification" onChange={onChange} />
           </div>
+          <Button variant="contained" id = '그룹생성취소' endIcon={<DeleteIcon />} size="small">
+          <Link to="/components/roadmap/lectures">
+            취소
+            </Link>
+          </Button> 
+          < Button variant="contained" id="제출" type="submit" startIcon={<SaveIcon />} size="small">
+            저장
+          </Button>
+
+
           <input id="제출" type="submit" />
+        
         </form>
       </div>
     </>
   );
 }
+
+/*저 107번째줄 하는거 없는애면 102줄 버튼으로 대체 가능?*/ 
 export default StudyGroupForm;
