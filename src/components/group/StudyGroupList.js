@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from "react";
+import {HashRouter as Router, Link} from "react-router-dom";
 import { dbService } from "fbase";
 
-const StudyGroupList = () => {
+const StudyGroupList = (props) => {
+  
   const [groups, setGroup] = useState([]);
-  const getGroup = async () => {
+  const getGroup = async (group_lecture) => {
     const dbGroup = await dbService.collection("groups").get();
     dbGroup.forEach((document) => {
-      const groupObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setGroup((prev) => [groupObject, ...prev]);
+      if(document.data().info.group_lecture===group_lecture) {
+        console.log(group_lecture);
+        const groupObject = {
+          ...document.data(),
+          id: document.id,
+        };
+        setGroup((prev) => [groupObject, ...prev]);
+      }
     });
   };
   useEffect(() => {
-    getGroup();
+    console.log(props);
+    const {location, history} = props;
+    const group_lecture = location.state.group_lecture;
+    if (group_lecture === null) {
+      history.push("/Home");
+    }
+    getGroup(group_lecture);
     /*dbService.collection("groups").onSnapshot((snapshot) => {
       const groupArray = snapshot.docs.map((doc) => ({
         id: doc.id,
@@ -23,22 +34,19 @@ const StudyGroupList = () => {
       setGroups(groupArray);
     });*/
   }, []);
-
+  
   return (
     <div>
-      {groups.map((group) => (
-        <fieldset key={group.id}>
-          <legend>{group.info.group_name}</legend>
-          <ul>
-            <li>그룹속성: {group.info.group_type}</li>
-            <li>강좌명: {group.info.group_lecture}</li>
-            <li>모집인원: {group.info.group_numOfMembers}</li>
-            <li>그룹 목표: {group.info.group_goal}</li>
-            <li>학업계획: {group.info.group_plane}</li>
-            <li>자격요건: {group.info.group_qualification}</li>
-          </ul>
-        </fieldset>
-      ))}
+      <Router>
+        {groups.map((group) => (
+          <Link to={{
+            pathname: `/studygrouplist/group/${group.info.group_name}`,
+            state: {group_name: group.info.group_name, userObj: null}
+          }}>
+            <button id ={group.info.group_name}>{group.info.group_name}</button>
+          </Link>
+        ))}
+      </Router>
     </div>
   )
 }

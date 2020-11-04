@@ -3,7 +3,8 @@ import { authService } from "fbase";
 
 const inputStyles = {};
 
-const AuthForm = () => {
+const AuthForm = ({props}) => {
+  const {history} = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [newAccount, setNewAccount] = useState(true);
@@ -34,10 +35,14 @@ const AuthForm = () => {
     } catch (error) {
       setError(error.message);
     }
+    if(!newAccount) {
+      history.push("/");
+    }
   };
   const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <>
+    {console.log(props)}
       <form onSubmit={onSubmit} className="container">
         <input
           id='이메일'
@@ -48,7 +53,7 @@ const AuthForm = () => {
           value={email}
           onChange={onChange}
           className="authInput"
-        />
+        /><br />
         <input
           id='비번'
           name="password"

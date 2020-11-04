@@ -1,14 +1,20 @@
 import React from "react";
 import Navigation from "components/Navigation"
 import Search from "components/Search";
+import MenuIcon from '@material-ui/icons/Menu';
 //import { dbService } from "fbase";
 
-const Home = () => {
+const Home = (isLoggedIn) => {
   return (
     <>
-      <Search />
+      <button id = '메뉴'>
+      <MenuIcon color="primary"/>
       <Navigation />
-    </>
+      </button>
+      <Search />
+
+      </>
+
   )
 }
 

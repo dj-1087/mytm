@@ -14,13 +14,19 @@ import InLB from "components/group/InLB";
 const LectureButton = () => {
   const lectures = elements.map((lectures) => (lectures.name));
   const mkButton = (lectures) => {
-  const buttons = [];
+    const buttons = [];
 
-  for (let index = 0; index < lectures.length; index++) {
-    const button = <Link to="/components/group/InLB"><button id ={lectures[index]}>{lectures[index]}</button></Link>;
-    buttons.push(button);
-  }return (buttons)
-}
+    for (let index = 0; index < lectures.length; index++) {
+      const group_lecture = lectures[index];
+      const button = <Link to={{
+        pathname: `/studygrouplist/group/${group_lecture}`,
+        state: {group_lecture, userObj: null}
+      }}>
+        <button id ={group_lecture}>{group_lecture}</button>
+      </Link>;
+      buttons.push(button);
+    }return (buttons)
+  }
 
 
   /* for (let index = 0; index < lectures.length; index++) {
@@ -58,7 +64,7 @@ const LectureButton = () => {
     <>
     <h2 id ='전공타이틀'>DB전공</h2>
 
-    <div className='DB전공'> /*라우터 필요 없어보여서 지움*/ 
+    <div className='DB전공'> 
         {mkButton(lectures)}
     </div>
 
@@ -67,13 +73,7 @@ const LectureButton = () => {
       <Link to="/sample_form">그룹 생성</Link>
       </button>
     </div>
-
-
-
-    
     </>
-
-    
   );
 
 

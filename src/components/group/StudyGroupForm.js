@@ -5,14 +5,16 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import { Button} from "@material-ui/core";
 import { dbService } from "fbase";
-import { Link } from "react-router-dom";
+import { HashRouter as Router , Link } from "react-router-dom";
 //그룹 폼 텍스트 데이터를 DB에 저장 DB에서 특정 데이터를 반환 하는 것 구현
 
-const StudyGroupForm = ({userObj}) => {
+const StudyGroupForm = (props) => {
+  const {history} = props;
+  const lectures = elements.map((lecture) => (lecture.name));
   const [studyGroup, setStudyGroup] = useState({
     group_name: '미등록',
-    group_lecture: '미등록',
-    group_type: '미등록',
+    group_lecture: lectures[0],
+    group_type: '스터디',
     group_numOfMembers: '0',
     group_goal: '미등록',
     group_plane: '미등록',
@@ -28,7 +30,6 @@ const StudyGroupForm = ({userObj}) => {
     group_qualification: PropTypes.string
   }*/
 
-  const lectures = elements.map((lecture) => (lecture.name));
   const mkOptions = (lectures) => {
     const options = [];
     for (let index = 0; index < lectures.length; index++) {
@@ -46,6 +47,7 @@ const StudyGroupForm = ({userObj}) => {
       creatorId: "null"/*userObj.uid*/
     });
     setStudyGroup("");
+    history.push("/");
   };
 
   const onChange = e => {
@@ -55,7 +57,6 @@ const StudyGroupForm = ({userObj}) => {
       [e.target.name]: e.target.value
     });
   };
-  console.log(lectures);
 
   return (
     <>
@@ -76,33 +77,34 @@ const StudyGroupForm = ({userObj}) => {
             
             <div>
               <label for="group_name">그룹명</label>
-              <input type="text" id="group_name" name="group_name" onChange={onChange} />
+              <input type="text" id="group_name" name="group_name" onChange={onChange} required/>
             </div>
             <div>
               <label for="group_numOfMembers">인원수</label>
-              <input type="text" id="group_numOfMembers" name="group_numOfMembers" onChange={onChange} />
+              <input type="text" id="group_numOfMembers" name="group_numOfMembers" onChange={onChange} required/>
             </div>
             <div>
               <label for="group_goal">그룹 목표</label>
-              <input type="text" id="group_goal" name="group_goal" onChange={onChange} />
+              <input type="text" id="group_goal" name="group_goal" onChange={onChange} required/>
             </div>
             <div>
               <label for="group_plane">학업계획</label>
-              <input type="text" id="group_plane" name="group_plane" onChange={onChange} />
+              <input type="text" id="group_plane" name="group_plane" onChange={onChange} required/>
             </div>
             
             <label for="group_qualification">자격 요건</label>
-            <input type="text" id="group_qualification" name="group_qualification" onChange={onChange} />
+            <input type="text" id="group_qualification" name="group_qualification" onChange={onChange} required/>
           </div>
-          <Button variant="contained" id = '그룹생성취소' endIcon={<DeleteIcon />} size="small">
-          <Link to="/components/roadmap/lectures">
-            취소
+          <Router>
+            <Link to="/components/roadmap/lectures">
+            <Button variant="contained" id = '그룹생성취소' endIcon={<DeleteIcon />} size="small">
+              취소
+            </Button> 
             </Link>
-          </Button> 
-          < Button variant="contained" id="제출" type="submit" startIcon={<SaveIcon />} size="small">
-            저장
-          </Button>
-
+            <Button input variant="contained" id="제출" type="submit" startIcon={<SaveIcon />} size="small">
+              저장
+            </Button>
+          </Router>
 
           <input id="제출" type="submit" />
         

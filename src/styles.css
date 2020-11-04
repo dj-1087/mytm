@@ -1,3 +1,11 @@
+/*메뉴 버튼*/
+#메뉴 {
+  border-radius: 7px;
+  background-color: rgba(210, 208, 221, 0.171);
+  border-color: rgba(170, 182, 194, 0.541);
+  height: 80%;
+}
+
 /*ㅅㅂ전공버튼들*/
 #전공타이틀 {
   text-align: center;
@@ -5,6 +13,7 @@
 }
 /*박스크게 그릴때 bottom쓰기*/
 .DB전공 {
+  position: relative;
   background-color: rgba(149, 172, 204, 0.651);
   border-radius: 7px;
   box-shadow: 10px 5px 2px 3px rgb(218, 218, 235);
@@ -32,6 +41,7 @@
   left: 6px;
   top: 225px;
 }
+
 #자료구조 {
   background-color: rgb(255, 220, 175);
   border-radius: 4px;
@@ -41,6 +51,7 @@
   left: 140px;
   top: 194px;
 }
+
 #알고리즘 {
   background-color: rgb(255, 220, 175);
   border-radius: 4px;
@@ -50,6 +61,7 @@
   left: 230px;
   top: 194px;
 }
+
 #R통계분석 {
   background-color: rgb(255, 220, 175);
   border-radius: 4px;
@@ -59,6 +71,7 @@
   left: 140px;
   top: 222px;
 }
+
 #통계적데이터분석 {
   background-color: rgb(214, 240, 252);
   border-radius: 4px;
@@ -78,6 +91,7 @@
   left: 230px;
   top: 250px;
 }
+
 #운영체제 {
   background-color: rgb(255, 220, 175);
   border-radius: 4px;
@@ -326,11 +340,13 @@
   margin-right: 109px;
   box-shadow: 5px 5px 2px -3px rgb(227, 227, 233);
 }
-
+#그룹생성취소 {
+  font-size: 8px;
+}
 #제출 {
   background-color: rgba(160, 150, 144, 0.548);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 7px;
 }
 
 #groupMake {
@@ -352,36 +368,94 @@ input {
 
 /*로그인폼 Auth*/
 .authContainer {
-  display: block;
+  position: absolute;
+  width: 80%;
+  height: 50%;
+  top: 25%;
+  left: 90px;
+  right: 90px;
+  font-size: 50px;
   color: rgba(0, 0, 0, 0.87);
-  margin: 0;
   font-size: 0.875rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   font-weight: 400;
   line-height: 1.43;
   letter-spacing: 0.01071em;
   background-color: #fff;
+  border-radius: 30px;
   box-shadow: 3px 4px 3px 3px rgb(199, 210, 219);
 }
 #이메일 {
-  padding: 18.5px 14px;
-  padding-top: 18.5px;
-  padding-right: 14px;
-  padding-bottom: 18.5px;
-  padding-left: 14px;
+  border-color: rgb(198, 214, 230);
+  position: absolute;
+  width: 40%;
+  height: 8%;
+  top: 60px;
+  left: 107px;
+  text-align: center;
 }
 
 #비번 {
-  border-radius: 4px;
   border-color: rgb(198, 214, 230);
-  margin: 1px;
-  position: static;
+  position: absolute;
+  width: 40%;
+  height: 8%;
+  top: 90px;
+  left: 100px;
+  margin: 6px;
+  background-position: bottom;
   text-align: center;
 }
 #로그인확인 {
+  position: absolute;
+  top: 135px;
+  left: 250px;
+  border-radius: 3px;
+  background-color: rgba(145, 178, 197, 0.637);
 }
-
+#깃허브로그인 {
+  position: absolute;
+  top: 28px;
+  left: 0px;
+  border-radius: 8px;
+  width: 120px;
+  background-color: rgba(191, 159, 206, 0.295);
+  border-color: rgba(194, 160, 204, 0.295);
+}
+#구글로그인 {
+  position: absolute;
+  top: 28px;
+  left: 150px;
+  border-radius: 8px;
+  width: 120px;
+  background-color: rgba(177, 190, 219, 0.219);
+  border-color: rgba(156, 165, 194, 0.295);
+}
+.authBtns {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+}
 /*\src\routes\ContestGroup.js*/
 #학교로고 {
   text-align: center;
 }
+
+/*mypage*/
+#내그룹 {
+  position: center;
+  border-radius: 30px;
+  border-color: rgba(200, 207, 218, 0.24);
+  background-color: rgba(200, 207, 218, 0.24);
+}
+#알림 {
+  border-radius: 30px;
+  border-color: rgba(231, 217, 204, 0.24);
+  background-color: rgba(224, 212, 180, 0.24);
+}
+#내정보 {
+  border-radius: 30px;
+  border-color: rgba(182, 177, 172, 0.24);
+  background-color: rgba(180, 192, 224, 0.24);
+}
+/*mypage*/
