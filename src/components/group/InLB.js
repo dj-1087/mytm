@@ -7,14 +7,16 @@ const Table = () => {
          <button id="basic">A모임 기본 정보 출력</button> 
          <button id="basic">B모임 기본 정보 출력</button>
          <button id="basic">C모임 기본 정보 출력</button>
-       </Router>);
-  return(
-      <div>
-        A모임
-      </div>
-  );
+         <button id='그룹생성'>
+    <Link to="/sample_form">그룹 생성</Link>
+    </button> 
+       </Router>
+
+       );
+
 
     };
+
 /*
 <form name="testForm" id="testForm">
     <input type="text" name="name" id="name" value="홍길동" />
