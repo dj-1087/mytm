@@ -14,6 +14,8 @@ const Auth = (props) => {
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
     await authService.signInWithPopup(provider);
+    
+    props.history.push("/");
   };
   return (
     <div className="authContainer">

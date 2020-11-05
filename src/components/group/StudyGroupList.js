@@ -15,13 +15,24 @@ const StudyGroupList = (props) => {
           id: document.id,
         };
         setGroup((prev) => [groupObject, ...prev]);
+      }else if (group_lecture==="all") {
+        const groupObject = {
+          ...document.data(),
+          id: document.id,
+        };
+        setGroup((prev) => [groupObject, ...prev]);
       }
     });
   };
   useEffect(() => {
     console.log(props);
-    const {location, history} = props;
-    const group_lecture = location.state.group_lecture;
+    const {location, history, match} = props;
+    let group_lecture = "";
+    if(match.params.group_lecture==="all") {
+      group_lecture = "all"
+    }else {
+      group_lecture = location.state.group_lecture;
+    }
     if (group_lecture === null) {
       history.push("/Home");
     }

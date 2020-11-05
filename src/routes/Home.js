@@ -12,9 +12,7 @@ const Home = (isLoggedIn) => {
       <Navigation />
       </button>
       <Search />
-
-      </>
-
+    </>
   )
 }
 

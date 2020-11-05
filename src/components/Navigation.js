@@ -1,10 +1,11 @@
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import MenuIcon from '@material-ui/icons/Menu';
+import Profile from "routes/Profile";
 
 
 //메뉴
-const Navigation = (isLoggedIn) => {
+const Navigation = (isLoggedIn, userObj) => {
   return (
     <div>
       <Router>
@@ -12,14 +13,23 @@ const Navigation = (isLoggedIn) => {
       <MenuIcon color="primary"/>
         <ul>
           <li><Link to="/components/roadmap/lectures">로드맵</Link></li>
-          <li><Link to="/studygrouplist/group/all">스터디/튜터링</Link></li>
+          <li>
+            <Link to={{
+              pathname: `/studygrouplist/group/all`,
+              state: {group_lecture: "all", userObj: null}
+            }}>
+              스터디/튜터링
+            </Link>
+          </li>
           <li><Link to="/contestgroup">공모전/대회</Link></li>
           <li><Link to="/Mypage">마이페이지</Link></li>
+          <li><Link to="/profile">프로필</Link></li>
           <li><Link to="/sample_form">스터디그룹 폼</Link></li>
-          {isLoggedIn ? (
+          {console.log(isLoggedIn)}
+          {isLoggedIn.isLoggedIn===null ? (
             <li><Link to="/login">로그인</Link></li>
           ):(
-            <li><Link to="/">로그아웃</Link></li>
+            <li><Link to="/"><Profile /></Link></li>
           )}
           <li><Link to="/components/roadmap/p">로드맵표</Link></li>
         </ul>
