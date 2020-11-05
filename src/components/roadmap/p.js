@@ -7,9 +7,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-
-
+import { LectureButton } from 'components/roadmap/LectureButton.js';
+let val = LectureButton();  
 
 const useStyles = makeStyles({
   table: {
@@ -22,10 +21,11 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
+
   createData(<button>와진짜 대박이다 이거다 어떻게 갖고오지?</button>, 159, 6.0, 24, 4.0),
   createData('알고리즘', 237, 9.0, 37, 4.3),
   createData('', 262, 16.0, 24, 6.0),
-  createData('', 305, 3.7, 67, 4.3),
+  createData(val, 305, 3.7, 67, 4.3),
   createData('', 356, 16.0, 49, 3.9),
   createData('', 356, 16.0, 49, 3.9),
   createData('', 356, 16.0, 49, 3.9),

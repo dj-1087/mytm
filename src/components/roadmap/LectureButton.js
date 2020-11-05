@@ -9,25 +9,31 @@ import InLB from "components/group/InLB";
 
 
 // 알고리즘 선택 시 알고리즘 튜터링 모여있는 페이지 따로만들어? ㄴㄴ 빈 페이지에 강좌명==버튼이름인 모임만 나오게
+//const buttons = [];
 
-
-const LectureButton = () => {
+      ////  var key = keyArr[i];
+      //lect[key] = lect[i];
+  export const LectureButton = () => {
   const lectures = elements.map((lectures) => (lectures.name));
   const mkButton = (lectures) => {
     const buttons = [];
-
+   
     for (let index = 0; index < lectures.length; index++) {
+
       const group_lecture = lectures[index];
       const button = <Link to={{
         pathname: `/studygrouplist/group/${group_lecture}`,
         state: {group_lecture, userObj: null}
       }}>
         <button id ={group_lecture}>{group_lecture}</button>
+
       </Link>;
       buttons.push(button);
-    }return (buttons)
-  }
+    } 
+   return (buttons)
 
+  }
+  
 
   /* for (let index = 0; index < lectures.length; index++) {
       if(학년[index]=="1학년" && classes[index]=="전필"){
