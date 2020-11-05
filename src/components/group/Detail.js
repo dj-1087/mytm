@@ -1,20 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-class Detail extends React.Component {
-  componentDidMount() {
-    const {group_name, history} = this.props;
+const Detail = (props) => {
+  useEffect(() => {
     if (group_name === undefined) {
       history.push("/");
     }
-  }
-  render() {
-    const {location} = this.props;
-    if (location.state) {
-      return <span>{location.state.title}</span>;
-    } else {
-      return null;
-    }
-  }
+  },[]);
+  const {group_name, history} = props;
+  return (
+    <>
+    {console.log(group_name)}
+    <span>{group_name}</span>;
+    </>
+  );
 } 
 
 export default Detail;

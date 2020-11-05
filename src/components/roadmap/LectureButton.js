@@ -13,7 +13,7 @@ import InLB from "components/group/InLB";
 
       ////  var key = keyArr[i];
       //lect[key] = lect[i];
-  export const LectureButton = () => {
+      export const LectureButton = () => {
   const lectures = elements.map((lectures) => (lectures.name));
   const mkButton = (lectures) => {
     const buttons = [];
@@ -21,11 +21,13 @@ import InLB from "components/group/InLB";
     for (let index = 0; index < lectures.length; index++) {
 
       const group_lecture = lectures[index];
-      const button = <Link to={{
+       const button = <Link to={{
         pathname: `/studygrouplist/group/${group_lecture}`,
         state: {group_lecture, userObj: null}
       }}>
-        <button id ={group_lecture}>{group_lecture}</button>
+
+
+        <button id ={group_lecture} name = 'j'>{group_lecture}</button>
 
       </Link>;
       buttons.push(button);

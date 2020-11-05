@@ -51,7 +51,7 @@ const StudyGroupList = (props) => {
       <Router>
         {groups.map((group) => (
           <Link to={{
-            pathname: `/studygrouplist/group/${group.info.group_name}`,
+            pathname: `/studygrouplist/group_name/${group.info.group_name}`,
             state: {group_name: group.info.group_name, userObj: null}
           }}>
             <button id ={group.info.group_name}>{group.info.group_name}</button>

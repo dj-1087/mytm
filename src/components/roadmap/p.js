@@ -7,8 +7,40 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { LectureButton } from 'components/roadmap/LectureButton.js';
-let val = LectureButton();  
+import { HashRouter as Router, Link } from "react-router-dom";
+import { elements } from "components/roadmap/lectures"
+import InLB from "components/group/InLB";
+
+//import { LectureButton } from 'components/roadmap/LectureButton.js';
+
+//let val = LectureButton(); 
+//Object.LectureButton.button(#알고리즘)
+//let j = Element.key(lec)
+//document.getElementsById('알고리즘')[0] 
+
+
+
+
+
+ const LectureButton = () => {
+  const lectures = elements.map((lectures) => (lectures.name));
+  const mkButton = (lectures) => {
+    const buttons = [];
+   
+    for (let index = 0; index < lectures.length; index++) {
+
+      const group_lecture = lectures[index];
+       const button = <Link to={{
+        pathname: `/studygrouplist/group/${group_lecture}`,
+        state: {group_lecture, userObj: null}
+      }}>
+        <button id ={group_lecture} name = 'j'>{group_lecture}</button>
+
+      </Link>;
+      buttons.push(button);
+    } }}
+
+
 
 const useStyles = makeStyles({
   table: {
@@ -24,8 +56,8 @@ const rows = [
 
   createData(<button>와진짜 대박이다 이거다 어떻게 갖고오지?</button>, 159, 6.0, 24, 4.0),
   createData('알고리즘', 237, 9.0, 37, 4.3),
-  createData('', 262, 16.0, 24, 6.0),
-  createData(val, 305, 3.7, 67, 4.3),
+  createData('Element.key.LectureButton[1]', 262, 16.0, 24, 6.0),
+  createData('', 305, 3.7, 67, 4.3),
   createData('', 356, 16.0, 49, 3.9),
   createData('', 356, 16.0, 49, 3.9),
   createData('', 356, 16.0, 49, 3.9),
@@ -35,6 +67,7 @@ const rows = [
 
 export default function BasicTable() {
   const classes = useStyles();
+  LectureButton()
   //var name_by_id = document.getElementById("기초프로그래밍").getAttribute('name');
   return (
     <TableContainer component={Paper}>
