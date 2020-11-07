@@ -1,22 +1,143 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>DB</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+	<style type="text/css">
+	
+	input.box:focus
+	{
+	
+		background-color:yellow;
+		
+	}
+	input.btn:hover
+	{
+	
+		color : orange;
+	}
+	</style>
+	
+	<script type="text/javascript">
+	
+
+import React from "react";
+import { HashRouter as Router, Link } from "react-router-dom";
+import { elements } from "components/roadmap/lectures"
+import InLB from "components/group/InLB";
+
+ export const LectureButton = () => {
+  const lectures = elements.map((lectures) => (lectures.name));
+  const mkButton = (lectures) => {
+  const buttons = [];
+   
+    for (let index = 0; index < lectures.length; index++) {
+
+      const group_lecture = lectures[index];
+      const button = <Link to={{
+        pathname: `/studygrouplist/group/${group_lecture}`,
+        state: {group_lecture, userObj: null}
+      }}>
+
+
+        <button id ={group_lecture} >{group_lecture}</button>
+
+      </Link>;
+      buttons.push(button);
+    } 
+   return (buttons)
+
+  }
+  
+  return(
+    <>
+    <h2 id ='전공타이틀'>DB전공</h2>
+
+    <div className='DB전공'> 
+        {mkButton(lectures)}
+    </div>
+
+    <div>
+      <button id='그룹생성'>
+      <Link to="/sample_form">그룹 생성</Link>
+      </button>
+    </div>
+    </>
+  );
+
+
+};
+
+
+export default LectureButton;
+
+
+
+
+
+
+
+
+		//왼쪽에 txt박스에 있는 내용을 오른쪽에 붙여넣는다.
+		function btnA_onclick()
+		{
+//			document.getElementById('ID값')
+
+			var txt01 =document.getElementById("txtLeft");
+			var txt02 =document.getElementById("txtRight");
+			var leftStr = txt01.value;
+			
+			txt02.value = leftStr;
+			
+		
+		}
+		//오른쪽 txt박스에 있는 내용을 왼쪽에 붙여넣는다.
+		function btnB_onclick()
+		{
+			var txt01 =document.getElementById("txtRight");
+			var txt02 =document.getElementById("txtLeft");
+			var RightStr=txt01.value;
+			
+			txt02.value = RightStr;
+			
+		}
+		
+		function btnC_onclick()
+		{
+			var txt01 =document.getElementById("txt_su1");	//객체 자체를 가져왔으므로 그 객체의  value값을 또 얻어와야함.
+			var txt02 =document.getElementById("txt_su2");
+			var txt03 =document.getElementById("txt_result");
+			//객체의 value값을 객체에 담는건 불가능함.
+			//txt03 = txt01.value+txt02.value;
+			
+			//연산 수행시 parseInt로 결과처리를 해야함 아니면 문자열 결합이됨.
+			//또는 Number로(이안에 value 값 넣기)
+		
+			txt03.value = parseInt(txt01.value) + parseInt(txt02.value);
+
+     		// or
+      		//txtRes.value = Number(txt01.value) + Number(txt02.value);
+			
+		}
+		
+		
+	</script>
 </head>
 <body>
-
-    <table border="1">
-	<th>테이블</th>
-	<th>만들기</th>
-	<tr><!-- 첫번째 줄 시작 -->
-	    <td><button type="button" onclick="location.href='/login' ">로그인</button></td>
-	    <td>두번째 칸</td>
-	</tr><!-- 첫번째 줄 끝 -->
-	<tr><!-- 두번째 줄 시작 -->
-	    <td>첫번째 칸</td>
-	    <td>두번째 칸</td>
-	</tr><!-- 두번째 줄 끝 -->
-    </table>
-    
+	<div>
+	<hr>
+		<input type="text" class="box" id="txtLeft">
+		<input type="button" value="A" class="btn" id="btnA" onclick="btnA_onclick()">
+		<input type="button" value="B" class="btn" id="btnB" onclick="btnB_onclick()">
+		<input type="text" class="box" id="txtRight">
+		<br>
+	
+		<input type="text" class="box_su" id="txt_su1">
+		+
+		<input type="text" class="box_su" id="txt_su2">
+		<input type="button" value="=" class="btn" id="btnC" onclick="btnC_onclick()">
+		<input type="text" class="box_su" id="txt_result">
+	</div>
 </body>
 </html>

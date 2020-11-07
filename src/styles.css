@@ -12,7 +12,7 @@
   margin: 4px;
 }
 /*박스크게 그릴때 bottom쓰기*/
-/*.DB전공 {
+.DB전공 {
   position: relative;
   background-color: rgba(149, 172, 204, 0.651);
   border-radius: 7px;
@@ -319,7 +319,7 @@
   position: fixed;
   left: 8px;
   top: 350px;
-}*/
+}
 /*전공버틀들 끝*/
 
 /*StudyGropForm*/

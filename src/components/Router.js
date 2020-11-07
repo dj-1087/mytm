@@ -12,7 +12,8 @@ import StudyGroupForm from "components/group/StudyGroupForm";
 import LectureButton from "components/roadmap/LectureButton";
 import Table from "components/group/InLB";
 import Auth from "routes/Auth"
-import BasicTable from "components/roadmap/p";
+import BasicTable from "components/roadmap/LectureButton";
+import buttons from "components/roadmap/LectureButton";
 
 //경로
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
@@ -21,7 +22,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
         <Navigation isLoggedIn={isLoggedIn, userObj} />
       <Switch>
         <Route path="/" exact={true} component={Home}>Home</Route>
-        <Route path="/components/roadmap/lectures" exact={true} component={LectureButton}></Route>
+        <Route path="/components/roadmap/lectures" exact={true} component={LectureButton,BasicTable,buttons}></Route>
         <Route path="/components/group/InLB" exact={true} component={Table}></Route>
         <Route path={`/studygrouplist/group/:group_lecture`} exact={true} component={StudyGroupList}></Route>
         <Route path={`/studygrouplist/group_name/:group_name`} exact={true} component={Detail}></Route>
@@ -31,6 +32,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
         <Route path="/sample_form" exact={true} component={StudyGroupForm}></Route>
         <Route path="/components/roadmap/p" exact={true} component={BasicTable}></Route>
         <Route path="/login" exact={true} component={Auth}></Route>
+  
       </Switch>
     </Router>
   );

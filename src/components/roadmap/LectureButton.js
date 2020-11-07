@@ -1,79 +1,115 @@
-// 노마드 nwitt 파일 수정 중 --
-//import { dbService } from "fbase";
 import React from "react";
 import { HashRouter as Router, Link } from "react-router-dom";
 import { elements } from "components/roadmap/lectures"
 import InLB from "components/group/InLB";
 
-// 튜터링 모여있는 테이블 만들기 --> 전공 필수, 전공 선택 강좌 31개 DT만 
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
+ export const LectureButton = () => {
+  const a = document.getElementById("자료구조")
 
-// 알고리즘 선택 시 알고리즘 튜터링 모여있는 페이지 따로만들어? ㄴㄴ 빈 페이지에 강좌명==버튼이름인 모임만 나오게
-//const buttons = [];
-
-      ////  var key = keyArr[i];
-      //lect[key] = lect[i];
-      export const LectureButton = () => {
+  const buttons = [];
   const lectures = elements.map((lectures) => (lectures.name));
-  const mkButton = (lectures) => {
-    const buttons = [];
-   
-    for (let index = 0; index < lectures.length; index++) {
 
-      const group_lecture = lectures[index];
+  const mkButton = (lectures) => {
+    for (let index = 0; index < lectures.length; index++) {
+       const group_lecture = lectures[index];
        const button = <Link to={{
         pathname: `/studygrouplist/group/${group_lecture}`,
         state: {group_lecture, userObj: null}
       }}>
-
-
-        <button id ={group_lecture} name = 'j'>{group_lecture}</button>
-
+        <button id ={group_lecture} >{group_lecture}</button>
       </Link>;
-      buttons.push(button);
+     buttons.push(button);
     } 
-   return (buttons)
+    return(buttons)
 
-  }
+
+          }
+          
+          const useStyles = makeStyles({
+            table: {
+              minWidth: 650,
+            },
+          } );
+          //(mkButton.Element[button])
+         // id(#'')}
+          function createData(name, calories, fat, carbs, protein) {
+            return { name, calories, fat, carbs, protein };
+          }
+          
+          const rows= [
+            
+            createData('', 159, 6.0, 24, 4.0),
+            createData('', 237, 9.0, 37, 4.3),
+            createData(buttons.includes('#자료구조'), 262, 16.0, 24, 6.0),
+            createData(<button ><Link to = '/' >홈</Link></button>, 305, 3.7, 67, 4.3),
+            createData(<button >ㅇㅇ</button>, 356, 16.0, 49, 3.9),
+            createData('', 356, 16.0, 49, 3.9),
+            createData('#기초프로그래밍', 356, 16.0, 49, 3.9),
+            createData((a), 356, 16.0, 49, 3.9),
+            createData(buttons.item, 356, 16.0, 49, 3.9),
+          ];
+          
+          function BasicTable() {
+
+          const classes = useStyles();
+            //var name_by_id = document.getElementById("기초프로그래밍").getAttribute('name');
+          return (
+            <TableContainer component={Paper}>
+              <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell align="right">1학년 1학기</TableCell>
+                    <TableCell align="right">1학년 2학기</TableCell>
+                    <TableCell align="right">2학년 1학기</TableCell>
+                    <TableCell align="right">2학년 2학기</TableCell>
+                    <TableCell align="right">3학년 1학기</TableCell>
+                    <TableCell align="right">3학년 2학기</TableCell>
+                    <TableCell align="right">4학년 1학기</TableCell>
+                    <TableCell align="right">4학년 2학기</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+
+                  {rows.map((row) => (
+                    <TableRow key={row.name}>
+                      <TableCell component="th" scope="row">
+                        {row.name}
+                      </TableCell>
+                      <TableCell align="right">{row.calories}</TableCell>
+                      <TableCell align="right">{row.fat}</TableCell>
+                      <TableCell align="right">{row.carbs}</TableCell>
+                      <TableCell align="right">{row.protein}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+            
+          );
+          
+        } 
   
-
-  /* for (let index = 0; index < lectures.length; index++) {
-      if(학년[index]=="1학년" && classes[index]=="전필"){
-        const button = <Link to="/components/group/InLB"><button id = {lectures[index]}>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }else if(학년[index]=="2학년" && classes[index]=="전필"){
-        const button = <Link to="/components/group/InLB"><button id ='이학년전필'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }else if(학년[index]=="2학년" && classes[index]=="전선"){
-        const button = <Link to="/components/group/InLB"><button id ='이학년전선'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }else if(학년[index]=="3학년" && classes[index]=="전필"){
-        const button = <Link to="/components/group/InLB"><button id ='삼학년전필'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }else if(학년[index]=="3학년" && classes[index]=="전선"){
-        const button = <Link to="/components/group/InLB"><button id ='삼학년전선'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }else if(학년[index]=="4학년" && classes[index]=="전선"){
-        const button = <Link to="/components/group/InLB"><button id ='사학년전선'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }
-    }*/
-    /*for (let index = 0; index < lectures.length; index++) {
-      if(classes[index]=="전필"){
-        const button = <Link to="/components/group/InLB"><button id ='전필'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }else{
-        const button = <Link to="/components/group/InLB"><button id ='전공선택'>{lectures[index]}</button></Link>;
-        buttons.push(button);
-      }
-    }*/
-    
-  return(
+          
+ 
+  return( 
     <>
     <h2 id ='전공타이틀'>DB전공</h2>
-
     <div className='DB전공'> 
         {mkButton(lectures)}
+        {BasicTable()}
+        {a}
+
+
+         
     </div>
 
     <div>
@@ -85,10 +121,7 @@ import InLB from "components/group/InLB";
   );
 
 
-};
 
+  };
 
-// 링크 ㄴㅁ어가는거 봤으니까 스터디 그룹 폼을 DB에 저장 DB에서 특정 데이터를 반환 하는 것 구현
-
-
-export default LectureButton;
+export default LectureButton; 
