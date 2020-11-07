@@ -29,7 +29,7 @@ import Paper from '@material-ui/core/Paper';
       </Link>;
      buttons.push(button);
     } 
-    return(buttons)
+    //return(buttons)
 
 
           }
@@ -49,13 +49,13 @@ import Paper from '@material-ui/core/Paper';
             
             createData('', 159, 6.0, 24, 4.0),
             createData('', 237, 9.0, 37, 4.3),
-            createData(buttons.includes('#자료구조'), 262, 16.0, 24, 6.0),
-            createData(<button ><Link to = '/' >홈</Link></button>, 305, 3.7, 67, 4.3),
-            createData(<button >ㅇㅇ</button>, 356, 16.0, 49, 3.9),
+            createData('', 262, 16.0, 24, 6.0),
+            createData('', 305, 3.7, 67, 4.3),
+            createData('', 356, 16.0, 49, 3.9),
             createData('', 356, 16.0, 49, 3.9),
             createData('#기초프로그래밍', 356, 16.0, 49, 3.9),
             createData((a), 356, 16.0, 49, 3.9),
-            createData(buttons.item, 356, 16.0, 49, 3.9),
+            createData(buttons[0], 356, 16.0, 49, 3.9),
           ];
           
           function BasicTable() {
