@@ -3,9 +3,17 @@ import AllInboxIcon from "@material-ui/icons/AllInbox";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import Profile from "routes/Profile";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const Mypage = ({ refreshUser, userObj }) => {
+  const history = useHistory();
+  useEffect(() => {
+    if (userObj == undefined) {
+      alert("로그인을 하십시오");
+      history.push("/login");
+    }
+  });
   return (
     <>
       <button id="내그룹">
