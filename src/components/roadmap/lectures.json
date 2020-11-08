@@ -8,6 +8,7 @@
       "name": "기초프로그래밍",
       "professor": "김상균",
       "grade": "1학년",
+      "semester": "1학기",
       "id": "1",
       "class": "전필"
     },
@@ -15,6 +16,7 @@
       "name": "기초프로그래밍2",
       "professor": "이강선",
       "grade": "1학년",
+      "semester": "2학기",
       "id": "2",
       "class": "전필"
     },
@@ -22,6 +24,7 @@
       "name": "자료구조",
       "professor": "권동섭",
       "grade": "2학년",
+      "semester": "1학기",
       "id": "3",
       "class": "전필"
     },
@@ -29,6 +32,7 @@
       "name": "R통계분석",
       "professor": "이강선",
       "grade": "2학년",
+      "semester": "1학기",
       "id": "4",
       "class": "전필"
     },
@@ -36,6 +40,7 @@
       "name": "알고리즘",
       "professor": "이강선",
       "grade": "2학년",
+      "semester": "2학기",
       "id": "5",
       "class": "전필"
     },
@@ -44,6 +49,7 @@
       "name": "통계적데이터분석",
       "professor": "교수님",
       "grade": "2학년",
+      "semester": "2학기",
       "id": "6",
       "class": "전선"
     },
@@ -52,6 +58,7 @@
       "name": "기초웹프로그래밍",
       "professor": "박주영",
       "grade": "2학년",
+      "semester": "2학기",
       "id": "7",
       "class": "전선"
     },
@@ -59,6 +66,7 @@
       "name": "운영체제",
       "professor": "박주영",
       "grade": "2학년",
+      "semester": "2학기",
       "id": "8",
       "class": "전필"
     },
@@ -66,6 +74,7 @@
       "name": "소프트웨어공학",
       "professor": "교수님",
       "grade": "3학년",
+      "semester": "1학기",
       "id": "9",
       "class": "전필"
     },
@@ -74,6 +83,7 @@
       "name": "인공지능",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "1학기",
       "id": "10",
       "class": "전필"
     },
@@ -81,6 +91,7 @@
       "name": "고급웹프로그래밍",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "1학기",
       "id": "11",
       "class": "전선"
     },
@@ -89,6 +100,7 @@
       "name": "컴퓨터아키텍쳐",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "1학기",
       "id": "12",
       "class": "전선"
     },
@@ -97,6 +109,7 @@
       "name": "UX디자인",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "1학기",
       "id": "13",
       "class": "전선"
     },
@@ -104,6 +117,7 @@
       "name": "소프트웨어인턴쉽",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "1학기",
       "id": "14",
       "class": "전선"
     },
@@ -111,6 +125,7 @@
       "name": "데이터베이스",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "2학기",
       "id": "15",
       "class": "전필"
     },
@@ -119,6 +134,7 @@
       "name": "빅데이터프로그래밍",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "2학기",
       "id": "16",
       "class": "전필"
     },
@@ -127,6 +143,7 @@
       "name": "자기주도학습2",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "2학기",
       "id": "17",
       "class": "전선"
     },
@@ -134,6 +151,7 @@
       "name": "소프트웨어세미나1",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "2학기",
       "id": "18",
       "class": "전선"
     },
@@ -141,6 +159,7 @@
       "name": "컴퓨터통신",
       "professor": " 교수님 ",
       "grade": "3학년",
+      "semester": "2학기",
       "id": "19",
       "class": "전선"
     },
@@ -148,6 +167,7 @@
       "name": "게임프로그래밍",
       "professor": "교수님 ",
       "grade": "3학년",
+      "semester": "2학기",
       "id": "20",
       "class": "전선"
     },
@@ -155,6 +175,7 @@
       "name": "캡스톤디자인1",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "1학기",
       "id": "21",
       "class": "전선"
     },
@@ -162,6 +183,7 @@
       "name": "딥러닝",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "1학기",
       "id": "22",
       "class": "전선"
     },
@@ -170,6 +192,7 @@
       "name": "데이터베이스프로젝트",
       "professor": "교수님",
       "grade": "4학년",
+      "semester": "1학기",
       "id": "23",
       "class": "전선"
     },
@@ -178,6 +201,7 @@
       "name": "모바일컴퓨팅",
       "professor": "교수님",
       "grade": "4학년",
+      "semester": "1학기",
       "id": "24",
       "class": "전선"
     },
@@ -185,6 +209,7 @@
       "name": "빅데이터기술특론1",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "1학기",
       "id": "25",
       "class": "전선"
     },
@@ -192,6 +217,7 @@
       "name": "현장실무교육12",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "1학기",
       "id": "26",
       "class": "전선"
     },
@@ -199,6 +225,7 @@
       "name": "캡스톤디자인2",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "2학기",
       "id": "27",
       "class": "전선"
     },
@@ -207,6 +234,7 @@
       "name": "데이터사이언스",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "2학기",
       "id": "28",
       "class": "전선"
     },
@@ -214,6 +242,7 @@
       "name": "블록체인기초",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "2학기",
       "id": "29",
       "class": "전선"
     },
@@ -221,6 +250,7 @@
       "name": "클라우드시스템",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "2학기",
       "id": "30",
       "class": "전선"
     },
@@ -228,6 +258,7 @@
       "name": "빅데이터기술특론2",
       "professor": " 교수님 ",
       "grade": "4학년",
+      "semester": "2학기",
       "id": "31",
       "class": "전선"
     }

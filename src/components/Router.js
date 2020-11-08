@@ -9,12 +9,10 @@ import ContestGroup from "routes/ContestGroup";
 import Mypage from "routes/Mypage";
 import Profile from "routes/Profile";
 import StudyGroupForm from "components/group/StudyGroupForm";
-import LectureButton from "components/roadmap/LectureButton";
-import LectureChips from "components/roadmap/LectureChip";
+import LectureChips from "components/roadmap/LectureBtn";
 import Table from "components/group/InLB";
 import Auth from "routes/Auth";
-import BasicTable from "components/roadmap/LectureChip";
-import buttons from "components/roadmap/LectureButton";
+import BasicTable from "components/roadmap/LectureBtn";
 
 //경로
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
@@ -65,11 +63,6 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
           path="/sample_form"
           exact={true}
           component={StudyGroupForm}
-        ></Route>
-        <Route
-          path="/components/roadmap/p"
-          exact={true}
-          component={BasicTable}
         ></Route>
         <Route path="/login" exact={true} component={Auth}></Route>
       </Switch>
