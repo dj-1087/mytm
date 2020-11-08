@@ -19,6 +19,7 @@ const Navigation = (isLoggedIn, userObj) => {
               state: {group_lecture: "all", userObj: null}
             }}>
               스터디/튜터링
+              
             </Link>
           </li>
           <li><Link to="/contestgroup">공모전/대회</Link></li>
