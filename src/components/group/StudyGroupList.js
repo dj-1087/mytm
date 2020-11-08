@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
-import {HashRouter as Router, Link} from "react-router-dom";
+import { HashRouter as Router, Link } from "react-router-dom";
 import { dbService } from "fbase";
 
 const StudyGroupList = (props) => {
-  
   const [groups, setGroup] = useState([]);
   const getGroup = async (group_lecture) => {
     const dbGroup = await dbService.collection("groups").get();
     dbGroup.forEach((document) => {
-      if(document.data().info.group_lecture===group_lecture) {
+      if (document.data().info.group_lecture === group_lecture) {
         console.log(group_lecture);
         const groupObject = {
           ...document.data(),
           id: document.id,
         };
         setGroup((prev) => [groupObject, ...prev]);
-      }else if (group_lecture==="all") {
+      } else if (group_lecture === "all") {
         const groupObject = {
           ...document.data(),
           id: document.id,
@@ -26,11 +25,11 @@ const StudyGroupList = (props) => {
   };
   useEffect(() => {
     console.log(props);
-    const {location, history, match} = props;
+    const { location, history, match } = props;
     let group_lecture = "";
-    if(match.params.group_lecture==="all") {
-      group_lecture = "all"
-    }else {
+    if (match.params.group_lecture === "all") {
+      group_lecture = "all";
+    } else {
       group_lecture = location.state.group_lecture;
     }
     if (group_lecture === null) {
@@ -45,21 +44,23 @@ const StudyGroupList = (props) => {
       setGroups(groupArray);
     });*/
   }, []);
-  
+
   return (
     <div>
       <Router>
         {groups.map((group) => (
-          <Link to={{
-            pathname: `/studygrouplist/group_name/${group.info.group_name}`,
-            state: {group_name: group.info.group_name, userObj: null}
-          }}>
-            <button id ={group.info.group_name}>{group.info.group_name}</button>
+          <Link
+            to={{
+              pathname: `/studygrouplist/group_name/${group.info.group_name}`,
+              state: { group_name: group.info.group_name, userObj: null },
+            }}
+          >
+            <button id={group.info.group_name}>{group.info.group_name}</button>
           </Link>
         ))}
       </Router>
     </div>
-  )
-}
+  );
+};
 
 export default StudyGroupList;

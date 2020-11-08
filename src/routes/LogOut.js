@@ -10,10 +10,10 @@ export default ({ refreshUser, userObj }) => {
     history.push("/");
   };
   return (
-  <>
-    <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
-      Log Out
-    </span>
-  </>
+    <>
+      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+        Log Out
+      </span>
+    </>
   );
 };

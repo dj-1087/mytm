@@ -14,17 +14,27 @@ const Auth = (props) => {
       provider = new firebaseInstance.auth.GithubAuthProvider();
     }
     await authService.signInWithPopup(provider);
-    
+
     props.history.push("/");
   };
   return (
     <div className="authContainer">
-      <AuthForm props={props}/>
+      <AuthForm props={props} />
       <div className="authBtns">
-        <button onClick={onSocialClick} name="google" className="authBtn" id='구글로그인'>
+        <button
+          onClick={onSocialClick}
+          name="google"
+          className="authBtn"
+          id="구글로그인"
+        >
           Continue with Google
         </button>
-        <button onClick={onSocialClick} name="github" className="authBtn" id='깃허브로그인'>
+        <button
+          onClick={onSocialClick}
+          name="github"
+          className="authBtn"
+          id="깃허브로그인"
+        >
           Continue with Github
         </button>
       </div>

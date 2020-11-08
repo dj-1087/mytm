@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import StudyGroupList from "./StudyGroupList";
 
@@ -20,8 +20,8 @@ const StudyGroup = () => {
         </fieldset>
       ))}*/}
     </div>
-  )
-}
+  );
+};
 
 /*function StudyGroup({id, name, lecture, type, numOfMembers, goal, plane, qualification}) {
   return (
