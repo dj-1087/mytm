@@ -24,8 +24,8 @@ const StudyGroupList = (props) => {
     });
   };
 
+  const { location, history, match } = props;
   useEffect(() => {
-    const { location, history, match } = props;
     console.log(location);
     let group_lecture = "";
     if (match.params.group_lecture === "all") {
@@ -41,18 +41,21 @@ const StudyGroupList = (props) => {
 
   return (
     <div>
-      <Router>
-        {groups.map((group) => (
+      {groups.map((group) => {
+        return (
           <Link
             to={{
               pathname: `/studygrouplist/group_name/${group.info.group_name}`,
-              state: { groupObj: group, userObj: null },
+              state: {
+                groupObj: group,
+                userObj: location.state.userObj,
+              },
             }}
           >
             <button id={group.info.group_name}>{group.info.group_name}</button>
           </Link>
-        ))}
-      </Router>
+        );
+      })}
     </div>
   );
 };

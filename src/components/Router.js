@@ -16,9 +16,12 @@ import BasicTable from "components/roadmap/LectureBtn";
 
 //경로
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
+  console.log(`라우터_userObj:`);
+  console.log(userObj);
+  console.log(`라우터_isLoggedIn: ${isLoggedIn}`);
   return (
     <Router>
-      <Navigation isLoggedIn={(isLoggedIn, userObj)} />
+      <Navigation isLoggedIn={isLoggedIn} userObj={userObj} />
       <Switch>
         <Route path="/" exact={true} component={Home}>
           Home

@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router, Link, useLocation } from "react-router-dom";
 import { elements } from "components/roadmap/lectures";
 
 import Table from "@material-ui/core/Table";
@@ -10,6 +10,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+import { useEffect } from "react";
 
 const useStyles = makeStyles({
   table: {
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-const splitBySchoolYear = () => {
+const splitBySchoolYear = (location) => {
   let schoolYears = [
     [[], []],
     [[], []],
@@ -29,7 +30,10 @@ const splitBySchoolYear = () => {
       <Link
         to={{
           pathname: `/studygrouplist/group/${lecture.name}`,
-          state: { group_lecture: lecture.name, userObj: null },
+          state: {
+            group_lecture: lecture.name,
+            userObj: location.state,
+          },
         }}
       >
         <button id={lecture.name}>{lecture.name}</button>
@@ -117,7 +121,10 @@ const createRows = (schoolYears) => {
 };
 
 export default function BasicTable() {
+  const location = useLocation();
   const classes = useStyles();
+  console.log("lectureBtn");
+  console.log(location);
 
   return (
     <TableContainer component={Paper}>
@@ -151,7 +158,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {createRows(splitBySchoolYear()).map((row) => (
+          {createRows(splitBySchoolYear(location)).map((row) => (
             <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}

@@ -46,6 +46,7 @@ const StudyGroupForm = ({ userObj }) => {
       info: studyGroup,
       createdAt: Date.now(),
       creatorId: "null" /*userObj.uid*/,
+      applyUser: [],
     });
     setStudyGroup("");
     history.push("/");
