@@ -59,11 +59,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
         <Route path="/Profile" exact={true}>
           <Profile refreshUser={refreshUser} userObj={userObj} />
         </Route>
-        <Route
-          path="/sample_form"
-          exact={true}
-          component={StudyGroupForm}
-        ></Route>
+        <Route path="/sample_form" exact={true}>
+          <StudyGroupForm userObj={userObj} />
+        </Route>
         <Route path="/login" exact={true} component={Auth}></Route>
       </Switch>
     </Router>

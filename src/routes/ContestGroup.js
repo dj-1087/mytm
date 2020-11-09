@@ -1,8 +1,7 @@
 import React from "react";
-//해수 입니다
 
 const ContestGroup = () => {
-  return <div id="학교로고">이미지라고 생각하세요~</div>;
+  return <div id="학교로고">공모전 대회/보류</div>;
 };
 
 export default ContestGroup;

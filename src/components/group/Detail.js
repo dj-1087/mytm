@@ -1,16 +1,20 @@
 import React, { useEffect } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 
-const Detail = (props) => {
+const Detail = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const group = location.state.groupObj;
+
   useEffect(() => {
-    if (group_name === undefined) {
+    if (group == undefined) {
       history.push("/");
     }
   }, []);
-  const { group_name, history } = props;
   return (
     <>
-      {console.log(group_name)}
-      <span>{group_name}</span>;
+      {console.log(history)}
+      <span>{group}</span>;
     </>
   );
 };

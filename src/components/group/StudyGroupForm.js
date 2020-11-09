@@ -5,11 +5,12 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import { Button } from "@material-ui/core";
 import { dbService } from "fbase";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router, Link, useHistory } from "react-router-dom";
 //그룹 폼 텍스트 데이터를 DB에 저장 DB에서 특정 데이터를 반환 하는 것 구현
 
-const StudyGroupForm = (props) => {
-  const { history } = props;
+const StudyGroupForm = ({ userObj }) => {
+  const history = useHistory();
+
   const lectures = elements.map((lecture) => lecture.name);
   const [studyGroup, setStudyGroup] = useState({
     group_name: "미등록",
@@ -57,6 +58,13 @@ const StudyGroupForm = (props) => {
       [e.target.name]: e.target.value,
     });
   };
+
+  useEffect(() => {
+    if (userObj == undefined) {
+      alert("로그인을 하십시오");
+      history.push("/login");
+    }
+  }, []);
 
   return (
     <>
@@ -159,5 +167,4 @@ const StudyGroupForm = (props) => {
   );
 };
 
-/*저 107번째줄 하는거 없는애면 102줄 버튼으로 대체 가능?*/
 export default StudyGroupForm;

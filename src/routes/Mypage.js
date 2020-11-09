@@ -13,7 +13,7 @@ const Mypage = ({ refreshUser, userObj }) => {
       alert("로그인을 하십시오");
       history.push("/login");
     }
-  });
+  }, []);
   return (
     <>
       <button id="내그룹">

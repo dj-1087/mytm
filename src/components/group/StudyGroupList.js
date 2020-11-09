@@ -23,9 +23,10 @@ const StudyGroupList = (props) => {
       }
     });
   };
+
   useEffect(() => {
-    console.log(props);
     const { location, history, match } = props;
+    console.log(location);
     let group_lecture = "";
     if (match.params.group_lecture === "all") {
       group_lecture = "all";
@@ -36,13 +37,6 @@ const StudyGroupList = (props) => {
       history.push("/Home");
     }
     getGroup(group_lecture);
-    /*dbService.collection("groups").onSnapshot((snapshot) => {
-      const groupArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setGroups(groupArray);
-    });*/
   }, []);
 
   return (
@@ -52,7 +46,7 @@ const StudyGroupList = (props) => {
           <Link
             to={{
               pathname: `/studygrouplist/group_name/${group.info.group_name}`,
-              state: { group_name: group.info.group_name, userObj: null },
+              state: { groupObj: group, userObj: null },
             }}
           >
             <button id={group.info.group_name}>{group.info.group_name}</button>
