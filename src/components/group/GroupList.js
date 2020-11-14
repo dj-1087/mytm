@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { HashRouter as Router, Link } from "react-router-dom";
+import { HashRouter as Router, Link, useHistory } from "react-router-dom";
 import { dbService } from "fbase";
-import { saveHistoryState } from "init";
+import { objectFromLocalStorage } from "init";
 
 const GroupList = (props) => {
+  const history = useHistory();
+
   const [groups, setGroup] = useState([]);
   const getGroup = async (group_lecture) => {
+    const userId = objectFromLocalStorage("user");
     const dbGroup = await dbService.collection("groups").get();
     dbGroup.forEach((document) => {
       if (document.data().info.group_lecture === group_lecture) {
@@ -23,7 +26,7 @@ const GroupList = (props) => {
         setGroup((prev) => [groupObject, ...prev]);
       } else if (
         group_lecture === "myGroups" &&
-        document.data().creator.userId == location.state.userObj.uid
+        document.data().creator.userId == userId
       ) {
         const groupObject = {
           ...document.data(),
@@ -34,15 +37,10 @@ const GroupList = (props) => {
     });
   };
 
-  const { location, history, match } = props;
+  const { group_lecture } = props;
   useEffect(() => {
-    console.log(location);
-    let group_lecture = "";
-    if (match.params.group_lecture === "all") {
-      group_lecture = "all";
-    } else {
-      group_lecture = location.state.group_lecture;
-    }
+    console.log(history);
+
     if (group_lecture === null) {
       history.push("/Home");
     }
@@ -59,7 +57,7 @@ const GroupList = (props) => {
                 pathname: `/studygrouplist/group_name/${group.info.group_name}`,
                 state: {
                   groupObj: group,
-                  userObj: location.state.userObj,
+                  userObj: objectFromLocalStorage("user"),
                 },
               }}
             >
