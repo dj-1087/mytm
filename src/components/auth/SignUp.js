@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory, Link as RouterLink } from "react-router-dom";
 import { authService } from "fbase";
-import { objectToLocalStorage } from "init";
+import { objectFromLocalStorage, objectToLocalStorage } from "init";
 
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -78,20 +78,20 @@ export default function SignUp({ refreshUser }) {
   const onSubmit = async (event) => {
     event.preventDefault();
     console.log(displayName);
+    let user;
     try {
       await authService.createUserWithEmailAndPassword(email, password);
+      user = authService.currentUser;
+      console.log(user);
     } catch (error) {
       setError(error.message);
     }
-    const user = authService.currentUser;
-    await user
-      .updateProfile({ displayName: displayName[0] + " " + displayName[1] })
-      .then(console.log(displayName));
-    objectToLocalStorage("user", {
-      displayName: user.displayName,
-      uid: user.uid,
-      updateProfile: (args) => user.updateProfile(args),
+    await user.updateProfile({
+      displayName: displayName[0] + " " + displayName[1],
     });
+    refreshUser();
+    console.log(user.displayName);
+
     history.push("/");
   };
 

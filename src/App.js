@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import AppRouter from "routes/Router";
+import Home from "routes/Home";
+
 import { authService } from "fbase";
-import { objectToLocalStorage } from "init";
 
 function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
-
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -18,8 +18,9 @@ function App() {
       } else {
         setUserObj(null);
       }
-      objectToLocalStorage("user", userObj);
-      setInit(true);
+      if (init === false) {
+        setInit(true);
+      }
     });
   }, []);
   const refreshUser = () => {
@@ -29,18 +30,15 @@ function App() {
       uid: user.uid,
       updateProfile: (args) => user.updateProfile(args),
     });
-    objectToLocalStorage("user", userObj);
   };
   return (
     <>
       {init ? (
         <>
-          <AppRouter refreshUser={refreshUser} />
+          <Home refreshUser={refreshUser} />
         </>
       ) : (
-        <div id="loading">
-          <img id="loading-image" src="img/ajax-loader.gif" alt="Loading..." />
-        </div>
+        <h1 id="loading">Loading</h1>
       )}
     </>
   );

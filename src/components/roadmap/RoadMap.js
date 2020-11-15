@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { HashRouter as Router, Link, useLocation } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Link,
+  useHistory,
+  useLocation,
+} from "react-router-dom";
 import { elements } from "components/roadmap/lectures";
 
 import Table from "@material-ui/core/Table";
@@ -13,6 +18,7 @@ import Paper from "@material-ui/core/Paper";
 import { useEffect } from "react";
 import { objectFromLocalStorage } from "init";
 import GroupList from "components/group/GroupList";
+import { authService } from "fbase";
 
 const useStyles = makeStyles({
   table: {
@@ -37,29 +43,19 @@ const splitBySchoolYear = (userObj, setShowGroups) => {
   ];
   for (const lecture of elements) {
     const lectureBtn = (
-      // <Link
-      //   to={{
-      //     pathname: `/studygrouplist/group/${lecture.name}`,
-      //     state: {
-      //       group_lecture: lecture.name,
-      //       userObj: userObj,
-      //     },
-      //   }}
-      //>
-      <button
-        id={lecture.name}
-        name={lecture.name}
-        onClick={(event) => {
-          console.log(event.target.name);
-          const {
-            target: { name },
-          } = event;
-          setShowGroups(name);
+      <Link
+        to={{
+          pathname: `/studygrouplist/group/${lecture.name}`,
+          state: {
+            group_lecture: lecture.name,
+            userObj: userObj,
+          },
         }}
       >
-        {lecture.name}
-      </button>
-      // </Link>
+        <button id={lecture.name} name={lecture.name}>
+          {lecture.name}
+        </button>
+      </Link>
     );
     if (lecture.grade === "1학년") {
       if (lecture.semester === "1학기") {
@@ -87,7 +83,7 @@ const splitBySchoolYear = (userObj, setShowGroups) => {
       }
     }
   }
-  console.log(schoolYears);
+
   return schoolYears;
 };
 function createData(
@@ -142,69 +138,69 @@ const createRows = (schoolYears) => {
   return rowsValue;
 };
 
-export default function BasicTable() {
-  const [showGroups, setShowGroups] = useState("");
-  const userObj = objectFromLocalStorage("user");
+export default function BasicTable(props) {
+  console.log(props);
+  let [showGroups, setShowGroups] = useState(props.showGroups);
+  const userObj = authService.currentUser;
   const classes = useStyles();
-  console.log("lectureBtn");
+
+  useEffect(() => {
+    showGroups = props.showGroups;
+  });
 
   return (
     <>
-      {showGroups === "" ? (
-        <TableContainer component={Paper}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>학년</TableCell>
-                <TableCell align="center" colSpan="2">
-                  1학년
-                </TableCell>
-                <TableCell align="center" colSpan="2">
-                  2학년
-                </TableCell>
-                <TableCell align="center" colSpan="2">
-                  3학년
-                </TableCell>
-                <TableCell align="center" colSpan="2">
-                  4학년
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>학기</TableCell>
-                <TableCell align="center">1학기</TableCell>
-                <TableCell align="center">2학기</TableCell>
-                <TableCell align="center">1학기</TableCell>
-                <TableCell align="center">2학기</TableCell>
-                <TableCell align="center">1학기</TableCell>
-                <TableCell align="center">2학기</TableCell>
-                <TableCell align="center">1학기</TableCell>
-                <TableCell align="center">2학기</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {createRows(splitBySchoolYear(userObj, setShowGroups)).map(
-                (row) => (
-                  <TableRow key={row.name}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="center">{row.freshman1}</TableCell>
-                    <TableCell align="center">{row.freshman2}</TableCell>
-                    <TableCell align="center">{row.sophomore1}</TableCell>
-                    <TableCell align="center">{row.sophomore2}</TableCell>
-                    <TableCell align="center">{row.junior1}</TableCell>
-                    <TableCell align="center">{row.junior2}</TableCell>
-                    <TableCell align="center">{row.senior1}</TableCell>
-                    <TableCell align="center">{row.senior2}</TableCell>
-                  </TableRow>
-                )
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      ) : (
-        <GroupList group_lecture={showGroups} />
-      )}
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>학년</TableCell>
+              <TableCell align="center" colSpan="2">
+                1학년
+              </TableCell>
+              <TableCell align="center" colSpan="2">
+                2학년
+              </TableCell>
+              <TableCell align="center" colSpan="2">
+                3학년
+              </TableCell>
+              <TableCell align="center" colSpan="2">
+                4학년
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>학기</TableCell>
+              <TableCell align="center">1학기</TableCell>
+              <TableCell align="center">2학기</TableCell>
+              <TableCell align="center">1학기</TableCell>
+              <TableCell align="center">2학기</TableCell>
+              <TableCell align="center">1학기</TableCell>
+              <TableCell align="center">2학기</TableCell>
+              <TableCell align="center">1학기</TableCell>
+              <TableCell align="center">2학기</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {createRows(splitBySchoolYear(userObj, setShowGroups)).map(
+              (row) => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="center">{row.freshman1}</TableCell>
+                  <TableCell align="center">{row.freshman2}</TableCell>
+                  <TableCell align="center">{row.sophomore1}</TableCell>
+                  <TableCell align="center">{row.sophomore2}</TableCell>
+                  <TableCell align="center">{row.junior1}</TableCell>
+                  <TableCell align="center">{row.junior2}</TableCell>
+                  <TableCell align="center">{row.senior1}</TableCell>
+                  <TableCell align="center">{row.senior2}</TableCell>
+                </TableRow>
+              )
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

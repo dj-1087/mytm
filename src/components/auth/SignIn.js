@@ -73,13 +73,9 @@ export default function SignIn() {
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    let data;
     try {
-      let data = await authService.signInWithEmailAndPassword(email, password);
-      objectToLocalStorage("user", {
-        displayName: data.user.displayName,
-        uid: data.user.uid,
-        updateProfile: (args) => data.user.updateProfile(args),
-      });
+      data = await authService.signInWithEmailAndPassword(email, password);
     } catch (error) {
       setError(error.message);
     }
